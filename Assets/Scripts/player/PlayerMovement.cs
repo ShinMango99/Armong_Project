@@ -12,19 +12,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    
+
+    [Space(10f)]
+    [Header("=========Battle State=========")]
+    public EnemyBehaviour enemy;
+
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-        if(Input.GetButtonDown("Jump") && IsGrounded())
+        if (!enemy.isFighting)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
+            horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            if (Input.GetButtonDown("Jump") && IsGrounded())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            }
+
+            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
         }
     }
 
