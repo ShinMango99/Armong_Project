@@ -2,46 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class playerHealth : MonoBehaviour
+public class enemyHealthManager : MonoBehaviour
 {
     public int maxHealth = 10;
-    private int currentHealth;
+    public int currentHealth;
 
     public healthBar healthbar;
-    public Button damageButton;
-    public Text healthText;
+    public TMP_Text healthText;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
-
-        if (damageButton != null)
-        {
-            damageButton.onClick.AddListener(TakeDamageOnClick);
-        }
-        else
-        {
-            Debug.LogError("Button not assigned in the inspector!");
-        }
     }
 
-    void Update()
+    public void TakeHeadDamage(int damage)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(2);
-            UpdateHealthText();
-        }
-    }
-
-    void TakeDamageOnClick()
-    {
-        TakeDamage(2);
+        TakeDamage(damage);
         UpdateHealthText();
     }
 
+    public void TakeBodyDamage()
+    {
+        TakeDamage(1);
+        UpdateHealthText();
+    }
 
     void TakeDamage(int damage)
     {
