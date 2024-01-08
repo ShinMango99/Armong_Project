@@ -485,7 +485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 574158326}
-  - component: {fileID: 574158325}
+  - component: {fileID: 574158327}
   m_Layer: 0
   m_Name: PlayerHealth
   m_TagString: Untagged
@@ -493,22 +493,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &574158325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574158324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b071f2aac13a45b94113e5f23cb17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  healthbar: {fileID: 1586930961}
-  damageButton: {fileID: 562542073}
-  healthText: {fileID: 1727700869}
 --- !u!4 &574158326
 Transform:
   m_ObjectHideFlags: 0
@@ -524,6 +508,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &574158327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574158324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b071f2aac13a45b94113e5f23cb17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  healthbar: {fileID: 1586930961}
+  healthButton: {fileID: 562542073}
+  healthText: {fileID: 1727700869}
 --- !u!1 &603235753
 GameObject:
   m_ObjectHideFlags: 0

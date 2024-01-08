@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class playerHealth : MonoBehaviour
 {
@@ -10,12 +9,22 @@ public class playerHealth : MonoBehaviour
     private int currentHealth;
 
     public healthBar healthbar;
-    public TMP_Text healthText;
+    public Button healthButton;
+    public Text healthText;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
+
+        if (healthButton != null)
+        {
+            healthButton.onClick.AddListener(DamageOnClick);
+        }
+        else
+        {
+            Debug.LogError("Button not assigned in the inspector!");
+        }
     }
 
     void Update()
@@ -25,6 +34,12 @@ public class playerHealth : MonoBehaviour
             TakeDamage(2);
             UpdateHealthText();
         }
+    }
+
+    void DamageOnClick()
+    {
+        Damage(2);
+        UpdateHealthText();
     }
 
     public void Damage(int damage)
