@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class playerHealth : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class playerHealth : MonoBehaviour
 
     public healthBar healthbar;
     public Button healthButton;
-    public Text healthText;
+    public TextMeshProUGUI healthText; // Change to TextMeshProUGUI
 
     void Start()
     {
@@ -47,7 +48,6 @@ public class playerHealth : MonoBehaviour
         TakeDamage(damage);
         UpdateHealthText();
     }
-
 
     void TakeDamage(int damage)
     {

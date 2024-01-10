@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class playerStamina : MonoBehaviour
 {
@@ -10,12 +11,16 @@ public class playerStamina : MonoBehaviour
 
     public staminaBar staminabar;
     public Button exhaustButton;
-    public Text staminaText;
+    public TextMeshProUGUI staminaText; // Change to TextMeshProUGUI
+
+    private float lastXPosition;
 
     void Start()
     {
         currentStamina = maxStamina;
         staminabar.SetMaxStamina(maxStamina);
+
+        lastXPosition = transform.position.x;
 
         if (exhaustButton != null)
         {
@@ -33,6 +38,16 @@ public class playerStamina : MonoBehaviour
         {
             Exhaust(2);
             UpdateStaminaText();
+        }
+
+        float deltaX = Mathf.Abs(transform.position.x - lastXPosition);
+
+        if (deltaX >= 2f)
+        {
+            // Player's x value has changed by 2 or more
+            ReduceStamina(1); // Adjust the amount as needed
+            UpdateStaminaText();
+            lastXPosition = transform.position.x; // Update the last position
         }
     }
 
@@ -60,5 +75,13 @@ public class playerStamina : MonoBehaviour
         {
             Debug.LogError("Stamina Text not assigned in the inspector!");
         }
+    }
+
+    void ReduceStamina(int amount)
+    {
+        currentStamina -= amount;
+
+        staminabar.SetStamina(currentStamina);
+        currentStamina = Mathf.Max(currentStamina, 0);
     }
 }
