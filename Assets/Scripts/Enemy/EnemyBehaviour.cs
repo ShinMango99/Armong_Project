@@ -66,14 +66,10 @@ public class EnemyBehaviour : MonoBehaviour
     {
         print("Head");
 
-        if (isFighting)
+        if (Random.Range(0f, 1f) <= 0.3f)
         {
-            isEnemyAttack = true;
-            if (isEnemyAttack)
-            {
-                enemyHealthManager.TakeHeadDamage(2);
-                Invoke(nameof(PlayerHit), 0.3f);
-            }
+            enemyHealthManager.TakeHeadDamage(5);
+            Invoke(nameof(PlayerHit), 0.3f);
         }
 
     }
@@ -81,14 +77,11 @@ public class EnemyBehaviour : MonoBehaviour
     public void OnBodyClick()
     {
         print("Body");
-        if (isFighting)
+
+        if (Random.Range(0f, 1f) <= 0.7f)
         {
-            isEnemyAttack = true;
-            if (isEnemyAttack)
-            {
-                enemyHealthManager.TakeHeadDamage(1);
-                Invoke(nameof(PlayerHit), 0.3f);
-            }
+            enemyHealthManager.TakeHeadDamage(3);
+            Invoke(nameof(PlayerHit), 0.3f);
         }
     }
 
